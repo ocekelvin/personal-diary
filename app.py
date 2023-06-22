@@ -57,11 +57,14 @@ def save_diary():
     profilename = f'static/profile-{mytime}.{profile_extension}'
     profile.save(os.path.join(basepath, profilename))
 
+    time = today.strftime('%Y-%m-%d')
+
     doc = {
         'file': filename,
         'profile': profilename,
         'title': title_receive,
-        'content': content_receive
+        'content': content_receive,
+        'time': time,
     }
     db.diary.insert_one(doc)
 
